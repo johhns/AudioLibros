@@ -18,6 +18,7 @@ public class AdaptadorLibros extends RecyclerView.Adapter<AdaptadorLibros.ViewHo
     private   LayoutInflater inflater ;
     protected List<Libro>    listaLibros ;
     private   Context        contexto ;
+    private View.OnClickListener onClickListener ;
 
     public AdaptadorLibros(Context contexto ,List<Libro> listaLibros ) {
         inflater = (LayoutInflater) contexto.getSystemService(Context.LAYOUT_INFLATER_SERVICE) ;
@@ -29,6 +30,7 @@ public class AdaptadorLibros extends RecyclerView.Adapter<AdaptadorLibros.ViewHo
     @Override
     public AdaptadorLibros.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View  vista = inflater.inflate(R.layout.elemento_selector,null) ;
+        vista.setOnClickListener( onClickListener );
         return new ViewHolder(vista);
     }
 
@@ -57,4 +59,9 @@ public class AdaptadorLibros extends RecyclerView.Adapter<AdaptadorLibros.ViewHo
 
         }
     }
+
+    public void setOnItemClickListener( View.OnClickListener onClickListener ){
+        this.onClickListener = onClickListener ;
+    }
+
 }
